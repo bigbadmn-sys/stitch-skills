@@ -63,6 +63,17 @@ python3 <SKILL_DIR>/scripts/upload_to_stitch.py \
   [--title <SCREEN_TITLE>]
 ```
 
+> [!TIP]
+> **macOS / SSL Certificate Troubleshooting:**
+> If the upload fails with `ssl.SSLCertVerificationError: [SSL: CERTIFICATE_VERIFY_FAILED] unable to get local issuer certificate`, this means your Python installation does not have root certificate authorities configured.
+> Fix it by prepending `SSL_CERT_FILE` using the `certifi` bundle:
+> ```bash
+> SSL_CERT_FILE=$(python3 -c "import certifi; print(certifi.where())") python3 <SKILL_DIR>/scripts/upload_to_stitch.py \
+>   --project-id <PROJECT_ID> \
+>   --file-path <PATH_TO_FILE> \
+>   --api-key <API_KEY>
+> ```
+
 ### Supported File Types
 
 | Extension | MIME Type |
